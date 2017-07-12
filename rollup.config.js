@@ -56,7 +56,7 @@ export default {
   exports: 'named',
   external: ['react', 'glamorous', 'glamor'],
   globals: { react: 'React', glamorous: 'glamorous', glamor: 'Glamor' },
-  moduleName: 'hedron-glamorous',
+  moduleName: 'hedronGlamorous',
   plugins,
   targets,
 };
