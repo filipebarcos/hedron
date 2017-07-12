@@ -1,8 +1,8 @@
 // @flow
 /* globals ReactClass */
-import React, { Component, Children } from 'react';
+import React, {Component, Children} from 'react';
 import PropTypes from 'prop-types';
-import { defaultBreakpoints } from '../utils';
+import {defaultBreakpoints} from '../utils';
 
 const breakpointsShape = PropTypes.shape({
   sm: PropTypes.number,
@@ -25,12 +25,14 @@ export default class BreakpointProvider extends Component {
   };
 
   getChildContext() {
-    const { breakpoints: propsBreakpoints = {} } = this.props;
-    const { breakpoints: contextBreakpoints = {} } = this.context;
+    const {breakpoints: propsBreakpoints = {}} = this.props;
+    const {breakpoints: contextBreakpoints = {}} = this.context;
 
     return {
       breakpoints: {
-        ...defaultBreakpoints, ...contextBreakpoints, ...propsBreakpoints,
+        ...defaultBreakpoints,
+        ...contextBreakpoints,
+        ...propsBreakpoints,
       },
     };
   }
@@ -42,13 +44,14 @@ export default class BreakpointProvider extends Component {
 
 export const withBreakpoints = (WrappedComponent: ReactClass<mixed>) =>
   // eslint-disable-next-line react/no-multi-comp
-  class Breakpoints extends Component { // eslint-disable-line  react/prefer-stateless-function
+  class Breakpoints extends Component {
+    // eslint-disable-line  react/prefer-stateless-function
     static contextTypes = {
       breakpoints: breakpointsShape,
     };
 
     render() {
-      const { breakpoints } = this.context;
+      const {breakpoints} = this.context;
 
       return <WrappedComponent {...this.props} breakpoints={breakpoints} />;
     }

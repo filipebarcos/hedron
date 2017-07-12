@@ -8,7 +8,4 @@ import BreakpointProvider, {
 } from './components/BreakpointProvider';
 import * as utils from './utils';
 
-export {
-  Column, Page, Row, Hidden,
-  BreakpointProvider, withBreakpoints, utils,
-};
+export {Column, Page, Row, Hidden, BreakpointProvider, withBreakpoints, utils};
