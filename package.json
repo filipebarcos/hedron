@@ -1,6 +1,6 @@
 {
   "name": "hedron-glamorous",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A no-frills flexbox grid system for React.",
   "main": "dist/hedron-glamorous.js",
   "author": {
@@ -18,7 +18,7 @@
     "flow": "flow",
     "pretest": "npm run lint && npm run flow",
     "test": "jest",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6007",
     "build-storybook": "build-storybook"
   },
   "bugs": {
@@ -78,8 +78,6 @@
     "react": "^15.0.0"
   },
   "jest": {
-    "testPathDirs": [
-      "src"
-    ]
+    "testPathDirs": ["src"]
   }
 }

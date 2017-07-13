@@ -1,8 +1,11 @@
 import media from './media';
 
-const breakpoint = (name, getStyle) => props =>
-  media[name]
-    ? media[name](props.breakpoints)`${props => getStyle(props, name)}`
-    : getStyle(props, name);
+const breakpoint = (name, getStyle) => props => {
+  if (media[name]) {
+    return media[name](props.breakpoints)(getStyle(props, name));
+  } else {
+    return getStyle(props, name);
+  }
+};
 
 export default breakpoint;

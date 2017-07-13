@@ -60,28 +60,28 @@ ColumnContainer.defaultProps = {
 const compute = name =>
   breakpoint(name, (props, name) =>
     ((divisions, size, shift) => {
-      return {
-        width: size ? `${divvy(divisions, size)}%` : 'inherit',
-        marginLeft: shift ? `${divvy(divisions, shift)}%` : 'inherit',
-      };
+      const ret = {};
+      if (size) ret.width = `${divvy(divisions, size)}%`;
+      if (shift) ret.marginLeft = `${divvy(divisions, shift)}%`;
+      return ret;
     })(props.divisions, props[name], props[`${name}Shift`]),
   );
 
 const Column = glamorous(ColumnContainer)(
   {
     display: 'block',
-    ...compute('xs'),
-    ...compute('sm'),
-    ...compute('md'),
-    ...compute('lg'),
+    boxSizing: 'border-box',
+    width: '100%',
   },
   props => {
     return {
-      boxSizing: 'border-box',
       padding: props.fluid ? '0' : '20px',
-      width: '100%',
       backgroundColor: props.debug ? 'rgba(50, 50, 255, .1)' : 'inherit',
       outline: props.debug ? '1px solid #fff' : 'inherit',
+      ...compute('xs')(props),
+      ...compute('sm')(props),
+      ...compute('md')(props),
+      ...compute('lg')(props),
     };
   },
 );
